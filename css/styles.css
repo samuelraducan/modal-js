@@ -54,7 +54,7 @@ h2 {
   background-color: var(--magenta-300);
   color: #fff;
   cursor: pointer;
-  outline: none;
+  transition: background-color 0.3s ease-out;
 }
 
 .button:hover,
@@ -80,6 +80,7 @@ h2 {
   margin-right: auto;
   margin-left: auto;
   color: var(--magenta-300);
+  animation: point 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
 /* Modal */
@@ -96,6 +97,7 @@ h2 {
   right: 0;
   opacity: 0;
   z-index: -1;
+  transition: opacity 0.3s ease-out, z-index 0s 0.3s linear;
 }
 
 .modal {
@@ -113,6 +115,7 @@ h2 {
 .modal-is-open .modal-overlay {
   opacity: 1;
   z-index: 1;
+  transition-delay: 0s;
 }
 
 .modal__close-button {
@@ -138,4 +141,16 @@ h2 {
   opacity: 1;
   background: var(--magenta-300);
   border-color: var(--magenta-600);
+}
+
+@keyframes point {
+  0% {
+    transform: translateY(3rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
