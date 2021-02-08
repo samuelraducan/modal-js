@@ -3,6 +3,7 @@ const modalButton = document.querySelector('.button');
 const modalCloseButton = document.querySelector('.modal__close-button');
 const modalOverlay = document.querySelector('.modal-overlay');
 const wavingHand = document.querySelector('.wave-hand');
+const modal = document.querySelector('.modal');
 
 /* NOTE: Functions */
 const wave = hand => {
@@ -20,24 +21,79 @@ const wave = hand => {
   tl.to(hand, 0.2, { rotation: 0 });
 };
 
-/* NOTE: Event Listeners */
+// Focus on the button and input elements.
+const trapFocus = event => {
+  const focusables = modal.querySelectorAll('input, button');
+  const firstFocusable = focusables[0];
+  const lastFocusable = focusables[focusables.length - 1];
 
-// Open the modal
-modalButton.addEventListener('click', event => {
+  // Returns focus to the first focusable element
+  if (
+    document.activeElement === lastFocusable &&
+    event.key === 'Tab' &&
+    !event.shiftKey
+  ) {
+    event.preventDefault();
+    firstFocusable.focus();
+  }
+  // Directs focus back to the last focusable element
+  if (
+    document.activeElement === firstFocusable &&
+    event.key === 'Tab' &&
+    event.shiftKey
+  ) {
+    event.preventDefault();
+    lastFocusable.focus();
+  }
+};
+
+// Open Modal
+const openModal = _ => {
   document.body.classList.add('modal-is-open');
   wave(wavingHand);
+
+  const input = modal.querySelector('input');
+  // Focus on input
+  input.focus();
+
+  // Add Trap Focus
+  document.addEventListener('keydown', trapFocus);
+};
+
+// Close Modal
+const closeModal = _ => {
+  document.body.classList.remove('modal-is-open');
+  modalButton.focus();
+
+  // Remove Trap Focus
+  document.removeEventListener('keydown', trapFocus);
+};
+
+// Checks if modal is open
+const isModalOpen = _ => {
+  return document.body.classList.contains('modal-is-open');
+};
+
+/* NOTE: Event Listeners */
+
+modalButton.addEventListener('click', event => {
+  openModal();
 });
 
-// Close the modal
 modalCloseButton.addEventListener('click', event => {
-  console.log('You pressed the icon x');
-  document.body.classList.remove('modal-is-open');
+  closeModal();
 });
 
 // Close the modal when clicked outside the modal
 modalOverlay.addEventListener('click', event => {
-  console.log(event.target);
   if (!event.target.closest('.modal')) {
-    document.body.classList.remove('modal-is-open');
+    closeModal();
+  }
+});
+
+// Close the modal with the Escape Key
+document.addEventListener('keydown', event => {
+  if (isModalOpen() && event.key === 'Escape') {
+    closeModal();
   }
 });
