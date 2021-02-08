@@ -1,16 +1,4 @@
 :root {
-  /* Primary */
-  --magenta-050: #f5e1f7;
-  --magenta-100: #ecbdf2;
-  --magenta-200: #ce80d9;
-  --magenta-300: #bb61c7;
-  --magenta-400: #ad4bb8;
-  --magenta-500: #a23dad;
-  --magenta-600: #90279c;
-  --magenta-700: #7c1a87;
-  --magenta-800: #671270;
-  --magenta-900: #4e0754;
-
   /* Neutrals */
   --blue-grey-050: #f0f4f8;
   --blue-grey-100: #d9e2ec;
@@ -34,51 +22,43 @@
   --yellow-vivid-700: #cb6e17;
   --yellow-vivid-800: #b44d12;
   --yellow-vivid-900: #8d2b0b;
-
-  --red-vivid-050: #ffe3e3;
-  --red-vivid-100: #ffbdbd;
-  --red-vivid-200: #ff9b9b;
-  --red-vivid-300: #f86a6a;
-  --red-vivid-400: #ef4e4e;
-  --red-vivid-500: #e12d39;
-  --red-vivid-600: #cf1124;
-  --red-vivid-700: #ab091e;
-  --red-vivid-800: #8a041a;
-  --red-vivid-900: #610316;
-
-  --green-vivid-050: #e3f9e5;
-  --green-vivid-100: #c1f2c7;
-  --green-vivid-200: #91e697;
-  --green-vivid-300: #51ca58;
-  --green-vivid-400: #31b237;
-  --green-vivid-500: #18981d;
-  --green-vivid-600: #0f8613;
-  --green-vivid-700: #0e7817;
-  --green-vivid-800: #07600e;
-  --green-vivid-900: #014807;
 }
 
 html {
   font-size: 62.5%;
   font-family: 'Montserrat', sans-serif;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 body {
-  background-color: var(--blue-grey-100);
+  background-color: var(--yellow-vivid-050);
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
   color: var(--blue-grey-900);
-  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 3rem;
 }
 
 h2 {
-  font-weight: 400;
+  font-size: 3.65rem;
+}
+
+.heading {
+  font-size: 4.85rem;
+  text-align: center;
+  margin-top: 8.25rem;
 }
 
 .button {
   padding: 1.25rem 2.75rem;
   border: none;
   border-radius: 4px;
-  background-color: var(--magenta-300);
+  background-color: var(--blue-grey-800);
   color: #fff;
   transition: background-color 0.3s ease-out;
   /* outline: none; */
@@ -86,7 +66,7 @@ h2 {
 
 .button:hover,
 .button:active {
-  background-color: var(--magenta-600);
+  background-color: var(--blue-grey-600);
 }
 
 .container {
@@ -109,7 +89,7 @@ h2 {
   margin-top: 1em;
   margin-right: auto;
   margin-left: auto;
-  color: var(--magenta-300);
+  color: var(--blue-grey-300);
   animation: point 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
@@ -140,7 +120,7 @@ h2 {
   opacity: 0;
   z-index: -1;
   padding: 1em;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--yellow-vivid-100);
   transition: opacity 0.3s ease-out, z-index 0s 0.3s, visibility 0s 0.3s;
   /* Prevent them from focusing on things in the modal */
   visibility: hidden;
@@ -153,24 +133,12 @@ h2 {
   visibility: visible;
 }
 
-/* .modal {
-  display: grid;
-  place-items: center;
-  position: relative;
-  border-radius: 4px;
-  background-color: var(--magenta-300);
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.15);
-  color: #fff;
-  min-width: 50vmin;
-  min-height: 50vmin;
-} */
-
 .modal {
   display: grid;
   align-items: stretch;
   position: relative;
-  background-color: var(--magenta-300);
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.15);
+  background-color: var(--blue-grey-300);
+  box-shadow: 6px 6px 10px 2px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   color: #fff;
   min-width: 75vmin;
@@ -191,7 +159,7 @@ h2 {
   border-radius: 50%;
   border: 2px solid var(--blue-grey-400);
   background: var(--blue-grey-400);
-  color: white;
+  color: #fff;
   opacity: 0;
 }
 
@@ -203,8 +171,8 @@ h2 {
 .modal__close-button:active,
 .modal__close-button:focus {
   opacity: 1;
-  background: var(--magenta-300);
-  border-color: var(--magenta-600);
+  background: var(--blue-grey-300);
+  border-color: var(--blue-grey-600);
 }
 
 .modal__content > :first-child {
@@ -217,7 +185,7 @@ h2 {
 
 .modal__content > :last-child {
   padding: 3em 2em 3em 2em;
-  background: white;
+  background: #fff;
   color: var(--blue-grey-900);
   border-radius: 0 4px 4px 0;
 }
